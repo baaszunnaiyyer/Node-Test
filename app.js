@@ -19,6 +19,6 @@ const fs = require('lodash')
 const item = [1,[2 , [3, [4]]]]
 const fixeditem = fs.flattenDeep(item)
 console.log(fixeditem);
-console.log('This is the fixed Item');
+console.log('This is the the Fixed ');
 
 
