@@ -1,24 +1,33 @@
-//npm - global command, comes wiht node
-//npm --version
+const {readFile, writeFile} = require('fs').promises
 
-//local dependency - use it only in this particular project
-//npm i <packagename>
+// const util = require('util')
+// const readFilePromise = util.promisify(readFile)
+// const writeFilePromise = util.promisify(writeFile)
 
-//global dependency - use it any project
-//npm install -g <packagename>
-//sudo npm install -g <packagename> (mac)
+const start = async ()=>{
+    
+    try{
+        const first = await readFile('./Content/first.txt', 'utf8')
+        const second = await readFile('./Content/Second.txt', 'utf8')
+        await writeFile('./Content/hehehe.txt', `Hello This will be My last Thing HAHAHA \n ${first} \n ${second}`)
+        console.log(first, second);
+    }catch(err){
+        console.log(err);
+    }
+}
 
-//package.jason - Mainifest the file (stores important informationsab about project/package)
-//manual approch (create package.json in the root, create properties)
-//npm init (step by step process)
-// npm init -y (fills in the defualt values)
-
-
-const fs = require('lodash')
-
-const item = [1,[2 , [3, [4]]]]
-const fixeditem = fs.flattenDeep(item)
-console.log(fixeditem);
-console.log('This is the the Fixed ');
-
-
+start()
+    
+    // const getText = (path) =>{
+    //     return new Promise((resolve, reject) =>{
+    //         readFile(path, 'utf8', (err,data)=>{
+    //             if(err){
+    //                 reject(err)
+    //             }else{
+    //                 resolve(data)
+    //             }
+    //         })
+    //     })
+    // }
+    
+    // getText('./Content/first.txt').then((result) => console.log(result)).catch((err) => console.log(err))
